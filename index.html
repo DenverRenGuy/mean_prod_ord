@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app='main'>
+    <head>
+        <meta charset="utf-8">
+        <title>Product and Order </title>
+        <script src='bower_components/angular/angular.js'></script>
+        <script src='js/main.js'></script>
+        <script src='js/productCtrl.js'></script>
+        <script src='js/orderCtrl.js'></script>
+        <script src='js/productFactory.js'></script>
+        <script src='js/orderFactory.js'></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/site.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="" ng-hide='true'>
+                <p>Angular is not running!</p>
+            </div>
+            <div class="">
+                <h1>Products and Orders Relationships</h1>
+            </div>
+            <div class="container">
+                <div class="" ng-controller='productCtrl'>
+                    <form class="form-group form-horizontal" ng-submit='addProduct()'>
+                        <fieldset>
+                            <legend>Products Controller</legend>
+                            <div class="row">
+                                <label class="col-sm-2">Product Name</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class='form-control col-sm-4' ng-model=productName>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2">Product Price</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class='form-control col-sm-4' ng-model=productPrice>
+                                </div>
+                                <button type="submit" name="addProductButton" class="btn btn-primary">Add Product</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <div class="row">
+                        <table class="table table-bordered table-condensed" ng-init="getProducts()">
+                            <thead>
+                                <tr>
+                                    <td><a href="#"></a>Name</td>
+                                    <td><a href="#">Price</a></td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tr ng-repeat="product in products track by $index">
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td><button type="button" class="btn btn-danger" ng-click="removeProduct($index)">Delete Product</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="buffer">
+
+            </div>
+            <div class="container">
+                <div class="" ng-controller='orderCtrl'>
+                    <form class="form-group form-horizontal">
+                        <fieldset>
+                            <legend>Order Controller</legend>
+
+                        </fieldset>
+                    </form>
+                    <div class="row">
+                        <table class="table table-bordered table-condensed" ng-init="getProducts()">
+                            <thead>
+                                <tr>
+                                    <td><a href="#"></a>Name</td>
+                                    <td><a href="#">Price</a></td>
+                                    <td><a href="#">Qty Available</a></td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tr ng-repeat="order in orders track by $index">
+                                <td>{{ order.name }}</td>
+                                <td>{{ order.price }}</td>
+                                <td>{{ order.qty }}</td>
+                                <td><button type="button" class="btn btn-success" ng-click="purchaseOrder($index)">Buy</button></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
